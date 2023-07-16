@@ -7,13 +7,13 @@ import { configs } from "./configs/configs";
 import {IForm} from "./types/form.type";
 import {Form} from "./models/Form.model";
 
-const app = express();
+const index = express();
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+index.use(cors());
+index.use(express.json());
+index.use(express.urlencoded({ extended: true }));
 
-app.get("/forms",
+index.get("/forms",
     async (req: Request, res: Response): Promise<Response<IForm[]>> => {
     try {
         const forms = await Form.find({});
@@ -25,7 +25,7 @@ app.get("/forms",
     }
 });
 
-app.post(
+index.post(
     "/submit",
     async (req: Request, res: Response): Promise<Response<IForm>> => {
         try {
@@ -38,7 +38,7 @@ app.post(
     }
 );
 
-app.listen( configs.PORT, () => {
+index.listen( configs.PORT, () => {
     mongoose.connect(configs.DB_URL);
     console.log(`Server has started on PORT ${configs.PORT} 🥸`);
 });
