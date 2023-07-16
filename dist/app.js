@@ -43,8 +43,8 @@ app.post("/submit", async (req, res) => {
         return res.status(500).json({ error: "Internal Server Error" });
     }
 });
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const port = process.env.PORT || 5001;
+app.listen(port, () => {
     mongoose.connect(configs_1.configs.DB_URL);
     console.log("Server has started on PORT 5001");
 });

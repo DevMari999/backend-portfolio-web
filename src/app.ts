@@ -24,8 +24,8 @@ app.post(
 );
 
 
-const PORT = process.env.PORT || 5000;
-app.listen( PORT, () => {
+const port = process.env.PORT || 5001;
+app.listen( port, () => {
     mongoose.connect(configs.DB_URL);
     console.log("Server has started on PORT 5001")
 });
