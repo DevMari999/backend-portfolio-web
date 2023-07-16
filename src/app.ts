@@ -15,13 +15,14 @@ app.post(
     async (req: Request, res: Response): Promise<Response<IForm>> => {
         try {
             const createdUser = await Form.create(req.body);
-
             return res.status(201).json(createdUser);
         } catch (e) {
-            console.log(e);
+            console.log("Error creating user:", e);
+            return res.status(500).json({ error: "Internal Server Error" });
         }
     }
 );
+
 
 const PORT = process.env.PORT || 3000;
 app.listen( PORT, () => {
