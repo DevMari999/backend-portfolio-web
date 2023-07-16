@@ -38,7 +38,7 @@ index.post(
     }
 );
 
-index.listen( configs.PORT, () => {
+index.listen( process.env.PORT, () => {
     mongoose.connect(configs.DB_URL);
     console.log(`Server has started on PORT ${configs.PORT} 🥸`);
 });
