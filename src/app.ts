@@ -13,6 +13,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/forms",
+    async (req: Request, res: Response): Promise<Response<IForm[]>> => {
+    try {
+        const forms = await Form.find({});
+
+        return res.json(forms);
+    } catch (e) {
+        console.log(e);
+        return res.status(500).json({ error: "Failed to fetch forms" });
+    }
+});
+
 app.post(
     "/submit",
     async (req: Request, res: Response): Promise<Response<IForm>> => {
@@ -26,12 +38,12 @@ app.post(
     }
 );
 
-app.listen( configs.PORT, () => {
-    mongoose.connect(configs.DB_URL);
-    console.log(`Server has started on PORT ${configs.PORT} 🥸`);
-});
-
-// app.listen( process.env.PORT, () => {
+// app.listen( configs.PORT, () => {
 //     mongoose.connect(configs.DB_URL);
 //     console.log(`Server has started on PORT ${configs.PORT} 🥸`);
 // });
+
+app.listen( process.env.PORT, () => {
+    mongoose.connect(configs.DB_URL);
+    console.log(`Server has started on PORT ${configs.PORT} 🥸`);
+});

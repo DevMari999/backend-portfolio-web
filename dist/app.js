@@ -28,11 +28,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose = __importStar(require("mongoose"));
+const cors_1 = __importDefault(require("cors"));
 const configs_1 = require("./configs/configs");
 const Form_model_1 = require("./models/Form.model");
 const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
+app.get("/forms", async (req, res) => {
+    try {
+        const forms = await Form_model_1.Form.find({});
+        return res.json(forms);
+    }
+    catch (e) {
+        console.log(e);
+        return res.status(500).json({ error: "Failed to fetch forms" });
+    }
+});
 app.post("/submit", async (req, res) => {
     try {
         const createdUser = await Form_model_1.Form.create(req.body);
@@ -42,7 +54,7 @@ app.post("/submit", async (req, res) => {
         console.log(e);
     }
 });
-app.listen(configs_1.configs.PORT, () => {
+app.listen(process.env.PORT, () => {
     mongoose.connect(configs_1.configs.DB_URL);
     console.log(`Server has started on PORT ${configs_1.configs.PORT} 🥸`);
 });
