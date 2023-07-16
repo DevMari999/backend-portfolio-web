@@ -23,13 +23,7 @@ app.post(
     }
 );
 
-
-// app.listen( configs.PORT, () => {
-//     mongoose.connect(configs.DB_URL);
-//     console.log("Server has started on PORT 5001")
-// });
-
-app.listen( process.env.PORT, () => {
+app.listen( configs.PORT, () => {
     mongoose.connect(configs.DB_URL);
-    console.log("Server has started on PORT 5001")
+    console.log(`Server has started on PORT ${configs.PORT} 🥸`);
 });

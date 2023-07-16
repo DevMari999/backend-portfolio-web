@@ -42,7 +42,7 @@ app.post("/submit", async (req, res) => {
         console.log(e);
     }
 });
-app.listen(process.env.PORT, () => {
+app.listen(configs_1.configs.PORT, () => {
     mongoose.connect(configs_1.configs.DB_URL);
-    console.log("Server has started on PORT 5001");
+    console.log(`Server has started on PORT ${configs_1.configs.PORT} 🥸`);
 });
