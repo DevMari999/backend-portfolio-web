@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post(
-    "/users",
+    "/submit",
     async (req: Request, res: Response): Promise<Response<IForm>> => {
         try {
             const createdUser = await Form.create(req.body);
@@ -23,11 +23,13 @@ app.post(
     }
 );
 
-//
-// const port = process.env.PORT || 5001;
-app.listen( configs.PORT, () => {
+
+// app.listen( configs.PORT, () => {
+//     mongoose.connect(configs.DB_URL);
+//     console.log("Server has started on PORT 5001")
+// });
+
+app.listen( process.env.PORT, () => {
     mongoose.connect(configs.DB_URL);
     console.log("Server has started on PORT 5001")
 });
-
-

@@ -33,7 +33,7 @@ const Form_model_1 = require("./models/Form.model");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.post("/users", async (req, res) => {
+app.post("/submit", async (req, res) => {
     try {
         const createdUser = await Form_model_1.Form.create(req.body);
         return res.status(201).json(createdUser);
@@ -42,7 +42,7 @@ app.post("/users", async (req, res) => {
         console.log(e);
     }
 });
-app.listen(configs_1.configs.PORT, () => {
+app.listen(process.env.PORT, () => {
     mongoose.connect(configs_1.configs.DB_URL);
     console.log("Server has started on PORT 5001");
 });
