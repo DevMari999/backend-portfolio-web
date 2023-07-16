@@ -1,0 +1,43 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio",
+  "main": "src/app.ts",
+  "scripts": {
+    "start": "rimraf dist && tsc-watch --onSuccess 'npm run watch'",
+    "watch": "nodemon 'src/app.ts' --watch './src'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KostiaLopukh/dec-2022.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KostiaLopukh/dec-2022/issues"
+  },
+  "homepage": "https://github.com/KostiaLopukh/dec-2022#readme",
+  "dependencies": {
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/mongoose": "^5.11.97",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "nodemon": "^2.0.22",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "tsc-watch": "^6.0.4",
+    "typescript": "^5.1.3"
+  }
+}
+
