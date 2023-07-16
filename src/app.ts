@@ -38,12 +38,8 @@ app.post(
     }
 );
 
-// app.listen( configs.PORT, () => {
-//     mongoose.connect(configs.DB_URL);
-//     console.log(`Server has started on PORT ${configs.PORT} 🥸`);
-// });
-
-app.listen( process.env.PORT, () => {
+app.listen( configs.PORT, () => {
     mongoose.connect(configs.DB_URL);
     console.log(`Server has started on PORT ${configs.PORT} 🥸`);
 });
+
