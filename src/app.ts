@@ -1,5 +1,7 @@
 import express, { Request, Response } from "express";
 import * as mongoose from "mongoose";
+import cors from "cors";
+
 
 import { configs } from "./configs/configs";
 import {IForm} from "./types/form.type";
@@ -7,6 +9,7 @@ import {Form} from "./models/Form.model";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
