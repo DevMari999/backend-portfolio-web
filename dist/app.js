@@ -39,10 +39,12 @@ app.post("/submit", async (req, res) => {
         return res.status(201).json(createdUser);
     }
     catch (e) {
-        console.log(e);
+        console.log("Error creating user:", e);
+        return res.status(500).json({ error: "Internal Server Error" });
     }
 });
-app.listen(configs_1.configs.PORT, () => {
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
     mongoose.connect(configs_1.configs.DB_URL);
     console.log("Server has started on PORT 5001");
 });
